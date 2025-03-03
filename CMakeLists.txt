@@ -2160,6 +2160,18 @@ if(COOLPROP_COVERAGE)
   endif()
 endif()
 
+# Add the new executable for calculating isentropic states
+add_executable(IsentropicCalculator ${CMAKE_CURRENT_SOURCE_DIR}/src/IsentropicCalculator.cpp)
+
+# Link the CoolProp library to the new executable
+target_link_libraries(IsentropicCalculator CoolProp)
+
+# Set include directories for the new executable
+target_include_directories(IsentropicCalculator PRIVATE ${APP_INCLUDE_DIRS})
+
+# Install the new executable
+install(TARGETS IsentropicCalculator DESTINATION ${COOLPROP_INSTALL_PREFIX}/bin)
+
 # TODO: check relevance of http://www.cmake.org/Wiki/BuildingWinDLL
 
 #include_directories("${CMAKE_CURRENT_SOURCE_DIR}/CoolProp")
